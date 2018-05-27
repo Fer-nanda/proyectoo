@@ -1,0 +1,210 @@
+﻿<Window x:Class="Ventas.GUI.Empleados.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ventas.GUI.Empleados"
+        mc:Ignorable="d"
+        Title= "Entrega"  Height="520" Width="680">
+    <Window.Foreground>
+        <ImageBrush ImageSource="Imagenes/fondo1.jpg"/>
+    </Window.Foreground>
+    <Window.Background>
+        <ImageBrush ImageSource="Imagenes/fondo1.jpg"/>
+    </Window.Background>
+    <TabControl>
+
+        <TabItem  Header="Entregas"   Height="20" Width="120"  FontSize="13">
+
+            <Grid >
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="#FF740606" Offset="0.221"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label HorizontalAlignment="Center" Grid.Row="0" FontSize="24" Foreground="White" FontStyle="Italic" FontWeight="Bold" FontFamily="Lucida Calligraphy"  >Entregas</Label>
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <Button x:Name="btnNuevaEntrega" Click="btnNuevaEntrega_Click" Width="35" Height="20" Margin="5" ToolTip="Agregar">
+                        <Image Source="/Imagenes/add.png"></Image>
+                    </Button>
+
+
+                    <Button x:Name="btnElimarEntrega" Click="btnElimarEntrega_Click" Width="35" Height="20" Margin="5" ToolTip="Eliminar">
+                        <Image Source="/Imagenes/report_delete.png" ></Image>
+                    </Button>
+                </StackPanel>
+                <WrapPanel Grid.Row="1"   Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Foreground="White" FontSize="11">Fecha Hora Venta:</Label>
+                        <Label x:Name="lblFechaHoraVenta" Width="52"></Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Foreground="White" FontSize="11">Fecha Hora Entrega:</Label>
+                        <DatePicker x:Name="dtpFechaEntrega"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Foreground="White" FontSize="11">Fecha Hora Entrega Real:</Label>
+                        <Label x:Name="lblFechaHoraEntregaReal"></Label>
+                    </StackPanel>
+
+                </WrapPanel>
+                <WrapPanel Grid.Row="2">
+                    <StackPanel Orientation="Horizontal" Grid.Row="0">
+                        <Label Width="150" Foreground="White" FontSize="14">Almacenista:</Label>
+                        <ComboBox x:Name="cmbAlmacenista" Height="20" Width="180" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Width="150" Foreground="White" FontSize="14">Nombre del empleado:</Label>
+                        <ComboBox x:Name="cmbSolicitante" Height="20" Width="180"></ComboBox>
+                    </StackPanel>
+                </WrapPanel>
+                <WrapPanel Grid.Row="3" >
+
+                    <Label Foreground="White" FontSize="14">Muebles</Label>
+                    <ComboBox x:Name="cmbMuebles" Height="20" Width="180"/>
+                    <Button Width="50" Height="20" x:Name="btnAgregarMuebles" Click="btnAgregarMuebles_Click">+</Button>
+                    <Button Width="50" Height="20" x:Name="btnEliminarMuebles" Click="btnEliminarMuebles_Click">-</Button>
+                </WrapPanel>
+                <Label HorizontalAlignment="Center" Grid.Row="4" Foreground="White" FontWeight="Bold" FontSize="14">Listado De entregas</Label>
+                <DataGrid x:Name="dtgEntrega" IsReadOnly="True" MouseDoubleClick="dtgEntrega_MouseDoubleClick" Margin="8" Grid.Row="5" Height="100" Width="630"></DataGrid>
+                <Label HorizontalAlignment="Center" Grid.Row="6" Foreground="White" FontWeight="Bold" FontSize="14">"LISTA DE VENTA"</Label>
+                <WrapPanel Grid.Row="7" Orientation="Horizontal" >
+                    <DataGrid x:Name="dtgMueblesEntrega" IsReadOnly="True" HorizontalAlignment="Left" Margin="8" Height="100" Width="466"></DataGrid>
+                    
+                    <StackPanel Orientation="Vertical" Margin="5">
+                        <Button  x:Name="btnEntregarMueble" Click="btnEntregarMueble_Click" Width="80" Height="28" Margin="1">
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Entregar</Label>
+                                <Image Height="16" Source="/Imagenes/book_open.png"></Image>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="btnGuardarEntrega" Click="btnGuardarEntrega_Click" Width="80" Height="28" Margin="1">
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Guardar</Label>
+                                <Image Height="16" Source="/Imagenes/calculator.png"></Image>
+                            </StackPanel>
+                        </Button>
+                        
+                        <Button  x:Name="btnCancelarEntrega" Click="btnCancelarEntrega_Click" Height="28" Width="80" Margin="1">
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Cancelar</Label>
+                                <Image Source="/Imagenes/cancel.png" Height="16"></Image>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </WrapPanel>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Usuarios" Width="120"  Height="20"  FontSize="13">
+            <Grid>
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="#FF740606" Offset="0.221"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label HorizontalAlignment="Center" Grid.Row="0" FontSize="24" Foreground="White" FontStyle="Italic" FontWeight="Bold" FontFamily="Lucida Calligraphy"  Margin="15">Usuarios</Label>
+                <WrapPanel Grid.Row="1">
+                    
+                    <StackPanel  Orientation="Horizontal" Margin="5">
+                        <Label Width="105" Foreground="#FFF0E1E1" FontFamily="Arial" FontSize="12">Nombre Usuario</Label>
+                        <TextBox x:Name="txbNombreDeUsuario" Width="180" Margin="2"></TextBox>
+                    </StackPanel>
+                    <StackPanel  Orientation="Horizontal" Margin="5">
+                        <Label Width="105" Foreground="#FFF0E1E1" FontFamily="Arial" FontSize="12">Tipo Usuario</Label>
+                        <TextBox x:Name="txbTipoUsuario" Width="180" Margin="2"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Label Width="105" Foreground="#FFF0E1E1" FontFamily="Arial" FontSize="14">Contraseña</Label>
+                        <PasswordBox x:Name="boxContrasena" Width="180" Margin="2"></PasswordBox>
+                    </StackPanel>
+                    <Image x:Name="imgFotoos" Height="45" Width="76"/>
+                    <StackPanel  Orientation="Horizontal" Margin="5" Height="60">
+                        <Button x:Name="btnCargarFotoos" Click="btnCargarFotoos_Click" Content="Cargar Foto" Margin="28,0,546,32" Width="94"/>
+                    </StackPanel>
+                    
+
+                </WrapPanel>
+                <WrapPanel Grid.Row="2" HorizontalAlignment="Center">
+                    <Button Width="85" Margin="2" x:Name="btnNuevoUsuario" Click="btnNuevoUsuario_Click" Height="35" Background="#FF3A3333" Foreground="#FFFDFDFD">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Foreground="#FFF5ECEC" FontWeight="Bold" FontSize="14">Nuevo</Label>
+                            <Image Source="Imagenes/disk.png" Height="16"></Image>
+                        </StackPanel>
+                    </Button>
+                    <Button Width="85" Margin="2" x:Name="btnAgregar" Click="btnAgregar_Click" Background="#FF3A3333" Foreground="#FFFDFDFD">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Foreground="#FFF5ECEC" FontWeight="Bold" FontSize="14">Agregar</Label>
+                            <Image Source="/Imagenes/add.png" Height="16"></Image>
+                        </StackPanel>
+                    </Button>
+                    <Button Width="85" Margin="2" x:Name="btnEditarUsuario" Click="btnEditarUsuario_Click" Background="#FF3A3333" Foreground="#FFFDFDFD">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Foreground="#FFF5ECEC" FontWeight="Bold" FontSize="14">Editar</Label>
+                            <Image Source="/Imagenes/world_edit.png" Height="16"></Image>
+                        </StackPanel>
+                    </Button>
+                    <Button Width="85" Margin="2" x:Name="btnEliminarUusraios" Click="btnEliminarUusraios_Click" Background="#FF3A3333" Foreground="#FFFDFDFD">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Foreground="#FFF5ECEC" FontWeight="Bold" FontSize="14">Eliminar</Label>
+                            <Image Source="/Imagenes/basket_remove.png" Height="16"></Image>
+                        </StackPanel>
+                    </Button>
+                    <Button Width="85" Margin="2" x:Name="btnCancelarUsuario" Click="btnCancelarUsuario_Click" Background="#FF3A3333" Foreground="#FFFDFDFD">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Foreground="#FFF5ECEC" FontWeight="Bold" FontSize="14">Cancelar</Label>
+                            <Image Source="/Imagenes/cancel.png" Height="16"></Image>
+                        </StackPanel>
+                    </Button>
+                </WrapPanel>
+                <ListView x:Name="dtgUsuarios" Grid.Row="3" Margin="10">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width=".25*"/>
+                                    <ColumnDefinition Width=".75*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Source="{Binding Fotografia}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Height="50" Width="50"/>
+                                <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
+                                    <TextBlock Text="[" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding NombreDeUsuario}" FontWeight="Bold"/>
+                                    <TextBlock Text="[" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding Contraseña}" FontWeight="Bold"/>
+                                </StackPanel>
+                                <Label Grid.Column="1" Grid.Row="1" Content="{Binding Contraseña}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+            </Grid>
+        </TabItem>
+
+        <TabItem  Header="salir"  x:Name="btnSalir" MouseDoubleClick="btnSalir_MouseDoubleClick" Width="120"  Height="20"  FontSize="13">Salir</TabItem>
+        
+    </TabControl>
+</Window>
